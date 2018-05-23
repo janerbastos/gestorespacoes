@@ -1,7 +1,8 @@
-from __future__ import unicode_literals
+#-*- coding:UTF-8 -*-
 
 from django.contrib.auth.models import User
 from django.db import models
+
 
 # Create your models here.
 
@@ -68,7 +69,7 @@ class EspacoFisico(models.Model):
     nome = models.CharField(max_length=100)
     endereco = models.TextField(null=None, blank=True)
     componente = models.ManyToManyField('Componente', through='EspacoFisico_Componente')
-    imagens = models.ManyToManyField('Imagens')
+    imagens = models.ManyToManyField('Imagem')
 
 
 class EspacoFisico_Componente(models.Model):
@@ -80,7 +81,7 @@ class EspacoFisico_Componente(models.Model):
 
 class Imagem(models.Model):
     imagem = models.ImageField(upload_to='gestorespaco/midias/imagens')
-    status = models.BooleanField(default=True
+    status = models.BooleanField(default=True)
 
 
 class Componente(models.Model):
